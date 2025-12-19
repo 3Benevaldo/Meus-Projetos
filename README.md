@@ -2,21 +2,36 @@ Titulo
 
 # Sub-titulo
 
-Esse é o meu primeiro README
+# Antonio Benevaldo Chaves Santana
 
-*italico*
+Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados. Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizando consistência, rastreabilidade e qualidade da informação.
 
-*negrito*
+## Sobre mim
+- 📚 Estudando: Python, SQL/MySQL, Git/GitHub e fundamentos de dados
+- 🎯 Objetivo: construir um portfólio sólido com projetos práticos e bem documentados
+- 🔎 Interesses: análise de dados, ETL básico, indicadores, validação/auditoria de dados
 
-- Elemento 1
-- Elemento 2
+## Tecnologias e ferramentas
+- **Linguagens:** Python, SQL  
+- **Banco de dados:** MySQL  
+- **Ferramentas:** Git, GitHub, VS Code 
 
-1) Elemento 1
-2) Elemento 2
+## Projetos em destaque
 
-!(https://www.linkedin.com/in/SEULINKEDIN)
+- **Meus Projetos (tecnologias python/mysql)**  
+  Repositório: https://github.com/3Benevaldo/Meus-Projetos
 
+- **Projeto 1 — (mysql)**  
+  Descrição curta do que resolve e tecnologias usadas.  
+  Repositório: https://github.com/3Benevaldo/mysql
 
+- **Projeto 2 — python**  
+  Descrição curta do que resolve e tecnologias usadas.  
+  Repositório: https://github.com/3Benevaldo/prthon
+
+## GitHub Stats
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&hide_border=true)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true)
 
 
 
