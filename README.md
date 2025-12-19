@@ -1,4 +1,5 @@
 Titulo
+// Data: 19/12/2025
 
 # Sub-titulo
 
@@ -34,4 +35,5 @@ Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)**
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true)
 
 
+Adicionando data
 
