@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 Titulo
 // Data: 19/12/2025
 
 # Sub-titulo
 
+=======
+>>>>>>> 2becbcd55b96c4ee29c572a7545cd20b17176ced
 # Antonio Benevaldo Chaves Santana
 
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados. Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizando consistência, rastreabilidade e qualidade da informação.
@@ -34,6 +37,13 @@ Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)**
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&hide_border=true)
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true)
 
+<<<<<<< HEAD
 
 Adicionando data
+=======
+## Contato
+- GitHub: https://github.com/3Benevaldo  
+- LinkedIn: (https://www.linkedin.com 
+- E-mail: chsbene65@gmail.com 
+>>>>>>> 2becbcd55b96c4ee29c572a7545cd20b17176ced
 
