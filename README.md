@@ -2,9 +2,6 @@
 <p align="center">
 <h1 align="center">
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&duration=3000&pause=1000&color=00A8FF&center=true&vCenter=true&multiline=false&width=900&height=Antonio+Benevaldo+Chaves+Santana+➡️
-</p>
-
  
 ### Sobre mim
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
