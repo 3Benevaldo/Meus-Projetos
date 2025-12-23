@@ -23,7 +23,6 @@ Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizand
 - **Git & GitHub**
 - **VS Code**
 
----
 
 ### GitHub Stats
 https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&hide_border=true
