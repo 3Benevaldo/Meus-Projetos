@@ -3,13 +3,6 @@
 <p align="center">
   Estudante de Ciência de Dados — Python & SQL (MySQL) | Automação, ETL e dados fiscais/tributários  
 
-</p>
-
-<!-- Layout lado a lado -->
-<table>
-  <tr>
-    <!-- COLUNA ESQUERDA -->
-    <td width="50%" valign="top">
 
 ### Sobre mim
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
@@ -39,10 +32,6 @@ https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&h
 <br>
 https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true
 
-    </td>
-
-    <!-- COLUNA DIREITA -->
-    <td width="50%" valign="top">
 
 ### Projetos em Destaque
 
