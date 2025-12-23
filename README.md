@@ -1,7 +1,6 @@
 <h1 align="center">Antonio Benevaldo Chaves Santana</h1>
 <p align="center">
-  Estudante de Ciência de Dados — Python & SQL (MySQL) | Automação, ETL e dados fiscais/tributários  
-
+  
 
 ### Sobre mim
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
