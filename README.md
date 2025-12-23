@@ -1,5 +1,7 @@
-  <img src="https://svg-banners.vercel.app/api?type=rainbow&text1=Antonio%20Benevaldo%20Chaves%20Santana💻&width=t=200
-</h1>  
+<h1 align="center">Antonio Benevaldo Chaves Santana</h1>
+<p align="center">
+<h1 align="center">
+
 
 ### Sobre mim
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
