@@ -1,3 +1,6 @@
+<h1 align="center">Antonio Benevaldo Chaves Santana</h1>
+<p align="center">
+<h1 align="center">
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&duration=3000&pause=1000&color=00A8FF&center=true&vCenter=true&multiline=false&width=900&height=Antonio+Benevaldo+Chaves+Santana+➡️
 </p>
@@ -36,4 +39,5 @@ Repositório: https://github.com/3Benevaldo/prthon
 - **GitHub:** https://github.com/3Benevaldo  
 - **LinkedIn:** https://www.linkedin.com  
 - **E-mail:** chsbene65@gmail.com  
+
 
