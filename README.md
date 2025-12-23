@@ -14,7 +14,7 @@ Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizand
 
 #### Interesses 
 
-#### Tecnologias e ferramentas
+####  Tecnologias e ferramentas
 - **Python**
 - **SQL/MySQL**
 - **Git & GitHub**
