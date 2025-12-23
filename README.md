@@ -1,49 +1,69 @@
-<<<<<<< HEAD
-Titulo
-// Data: 19/12/2025
 
-# Sub-titulo
+<h1 align="center">Antonio Benevaldo Chaves Santana</h1>
+<p align="center">
+  Estudante de Ciência de Dados — Python & SQL (MySQL) | Automação, ETL e dados fiscais/tributários  
+  <br>// Data: 19/12/2025
+</p>
 
-=======
->>>>>>> 2becbcd55b96c4ee29c572a7545cd20b17176ced
-# Antonio Benevaldo Chaves Santana
+<!-- Layout lado a lado -->
+<table>
+  <tr>
+    <!-- COLUNA ESQUERDA -->
+    <td width="50%" valign="top">
 
-Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados. Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizando consistência, rastreabilidade e qualidade da informação.
+### Sobre mim
+Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
+Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizando consistência, rastreabilidade e qualidade da informação.
 
-## Sobre mim
-- 📚 Estudando: Python, SQL/MySQL, Git/GitHub e fundamentos de dados
-- 🎯 Objetivo: construir um portfólio sólido com projetos práticos e bem documentados
-- 🔎 Interesses: análise de dados, ETL básico, indicadores, validação/auditoria de dados
+#### Estudando agora
+- Python  
+- SQL/MySQL  
+- Git & GitHub  
+- Fundamentos de dados  
 
-## Tecnologias e ferramentas
-- **Linguagens:** Python, SQL  
-- **Banco de dados:** MySQL  
-- **Ferramentas:** Git, GitHub, VS Code 
+#### Interesses
+- ETL básico  
+- Indicadores  
+- Auditoria e validação de dados  
 
-## Projetos em destaque
+#### Tecnologias e ferramentas
+- **Python**
+- **SQL/MySQL**
+- **Git & GitHub**
+- **VS Code**
 
-- **Meus Projetos (tecnologias python/mysql)**  
-  Repositório: https://github.com/3Benevaldo/Meus-Projetos
+---
 
-- **Projeto 1 — (mysql)**  
-  Descrição curta do que resolve e tecnologias usadas.  
-  Repositório: https://github.com/3Benevaldo/mysql
+### GitHub Stats
+https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&hide_border=true
+<br>
+https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true
 
-- **Projeto 2 — python**  
-  Descrição curta do que resolve e tecnologias usadas.  
-  Repositório: https://github.com/3Benevaldo/prthon
+    </td>
 
-## GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&hide_border=true)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true)
+    <!-- COLUNA DIREITA -->
+    <td width="50%" valign="top">
 
-<<<<<<< HEAD
+### Projetos em Destaque
 
-Adicionando data
-=======
-## Contato
-- GitHub: https://github.com/3Benevaldo  
-- LinkedIn: (https://www.linkedin.com 
-- E-mail: chsbene65@gmail.com 
->>>>>>> 2becbcd55b96c4ee29c572a7545cd20b17176ced
+#### 🔹 Meus Projetos (Python / MySQL)  
+Repositório: https://github.com/3Benevaldo/Meus-Projetos  
 
+#### 🔹 Projeto 1 — MySQL  
+Descrição curta do que resolve e tecnologias usadas.  
+Repositório: https://github.com/3Benevaldo/mysql  
+
+#### 🔹 Projeto 2 — Python  
+Descrição curta do que resolve e tecnologias usadas.  
+Repositório: https://github.com/3Benevaldo/prthon  
+
+---
+
+### Contato
+- **GitHub:** https://github.com/3Benevaldo  
+- **LinkedIn:** https://www.linkedin.com  
+- **E-mail:** chsbene65@gmail.com  
+
+    </td>
+  </tr>
+</table>
