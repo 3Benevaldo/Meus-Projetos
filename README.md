@@ -1,6 +1,5 @@
-<p align="center">
-  https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=28&pause=800&color=36BCF7&center=true&vCenter=true&width=800&lines=Antonio+Benevaldo+Chaves+Santana
-</p>
+  <img src="https://svg-banners.vercel.app/api?type=rainbow&text1=Antonio%20Benevaldo%20Chaves%20Santana💻&width=t=200
+</h1>  
 
 ### Sobre mim
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
