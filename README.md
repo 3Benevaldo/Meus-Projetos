@@ -2,7 +2,7 @@
 <h1 align="center">Antonio Benevaldo Chaves Santana</h1>
 <p align="center">
   Estudante de Ciência de Dados — Python & SQL (MySQL) | Automação, ETL e dados fiscais/tributários  
-  <br>// Data: 19/12/2025
+  <br>// Data: 23/12/2025
 </p>
 
 <!-- Layout lado a lado -->
