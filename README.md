@@ -12,10 +12,7 @@ Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizand
 - Git & GitHub  
 - Fundamentos de dados  
 
-#### Interesses
-- ETL básico  
-- Indicadores  
-- Auditoria e validação de dados  
+#### Interesses 
 
 #### Tecnologias e ferramentas
 - **Python**
