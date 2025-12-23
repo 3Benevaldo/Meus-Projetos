@@ -1,15 +1,14 @@
-<h1 align="center">Antonio Benevaldo Chaves Santana</h1>
 <p align="center">
-<h1 align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&duration=3000&pause=1000&color=00A8FF&center=true&vCenter=true&multiline=false&width=900&height=Antonio+Benevaldo+Chaves+Santana+➡️
+</p>
 
-
+ 
 ### Sobre mim
 Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
 Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizando consistência, rastreabilidade e qualidade da informação.
 
 #### Interesses 
 
-####  Tecnologias e ferramentas
 - **Python**
 - **SQL/MySQL**
 - **Git & GitHub**
@@ -37,5 +36,4 @@ Repositório: https://github.com/3Benevaldo/prthon
 - **GitHub:** https://github.com/3Benevaldo  
 - **LinkedIn:** https://www.linkedin.com  
 - **E-mail:** chsbene65@gmail.com  
-
 
