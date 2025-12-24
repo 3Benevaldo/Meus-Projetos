@@ -1,39 +1,41 @@
-<h1 align="center">Antonio Benevaldo Chaves Santana</h1>
 <p align="center">
-<h1 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=2500&pause=1000&color=0000FF&center=true&vCenter=true&width=900&lines=Olá%2C+eu+sou+Antonio+Benevaldo+Chaves+Santana!" alt="Typing SVG" />
+</p>
+
 <p align="center">
- 
-### Sobre mim
-Sou **estudante de Ciência de Dados**, com foco em **Python** e **SQL (MySQL)** para análise, automação e organização de dados.  
-Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizando consistência, rastreabilidade e qualidade da informação.
+  <a href="https://github.com/antoniochaves">
+    <img src="https://img.shields.io/badge/GitHub-antoniochaves-000?style=flat&logo=github&logoColor=white" />
+  </a>
+  <a href="https://www.linkedin.com/in/SEULINKEDIN">
+    <img src="https://img.shields.io/badge/LinkedIn-Conectar-0A66C2?style=flat&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://SEUPORTFOLIO.com">
+    <img src="https://img.shields.io/badge/Portf%C3%B3lio-Acessar-111?style=flat&logo=firefox&logoColor=white" />
+  </a>
+</p>
 
-#### Interesses 
+## Sobre mim
+Sou estudante de **Ciência de Dados**, com foco em **Python e SQL (MySQL)**. Gosto de transformar dados em informação prática (análises, automações e relatórios) e evoluo por meio de projetos.
 
-- **Python**
-- **SQL/MySQL**
-- **Git & GitHub**
-- **VS Code**
+## GitHub
+![GitHub Stats](https://github-readme-stats-sigma-five.vercel.app/api?username=antoniochaves&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
 
-### GitHub Stats
-https://github-readme-stats.vercel.app/api?username=3Benevaldo&show_icons=true&hide_border=true
-<br>
-https://github-readme-stats.vercel.app/api/top-langs/?username=3Benevaldo&layout=compact&hide_border=true
+## Tecnologias
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-2F2F2F?style=flat)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
 
-### Projetos em Destaque
+## Projetos em destaque
+- Projeto 1 — Análise de Dados (Python/Pandas) → link do repositório
+- Projeto 2 — Banco de Dados (MySQL/SQL) → link do repositório
+- Projeto 3 — Automação (Python) → link do repositório
 
-#### 🔹 Meus Projetos (Python / MySQL)  
-Repositório: https://github.com/3Benevaldo/Meus-Projetos  
-
-#### 🔹 Projeto 1 — MySQL  
-Descrição curta do que resolve e tecnologias usadas.  
-Repositório: https://github.com/3Benevaldo/mysql  
-
-#### 🔹 Projeto 2 — Python  
-Descrição curta do que resolve e tecnologias usadas.  
-Repositório: https://github.com/3Benevaldo/prthon  
-
-### Contato
-- **GitHub:** https://github.com/3Benevaldo  
-- **LinkedIn:** https://www.linkedin.com  
-- **E-mail:** chsbene65@gmail.com  
-
+## Contato
+LinkedIn: https://www.linkedin.com/in/SEULINKEDIN  
+Portfólio: https://SEUPORTFOLIO.com
+Obrigado por visitar meu perfil!
+Obrigado por visitar meu perfil!  
