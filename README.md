@@ -1,7 +1,4 @@
 
-# minhas alteraçoes 
-=======
->>>>>>> 0d6060ffe4dac43777a23c7ebe2895988a1118de
 <p align="center">
   <img
     src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=34&pause=1000&center=true&vCenter=true&width=1000&lines=Antonio+Benevaldo+Chaves+Santana"
