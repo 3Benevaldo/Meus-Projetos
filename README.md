@@ -14,7 +14,7 @@ Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizand
 - **Python**
 - **SQL/MySQL**
 - **Git & GitHub**
-- **VS Code**
+- **Trello**
 
 ---
 
@@ -47,7 +47,7 @@ Repositório: https://github.com/3Benevaldo/mysql
 #### 🔹 Projeto 2 — Python
 Descrição curta do que resolve e tecnologias usadas.  
 Repositório: https://github.com/3Benevaldo/prthon
-
+https://trello.com/u/benevaldochaves/boards
 ---
 <<<<<<< HEAD
 =======
