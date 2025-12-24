@@ -48,9 +48,7 @@ Repositório: https://github.com/3Benevaldo/mysql
 Descrição curta do que resolve e tecnologias usadas.  
 Repositório: https://github.com/3Benevaldo/prthon
 https://trello.com/u/benevaldochaves/boards
----
-<<<<<<< HEAD
-=======
+
 
 ### Contato
 - **GitHub:** https://github.com/3Benevaldo
