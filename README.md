@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # minhas alteraçoes 
 =======
 >>>>>>> 0d6060ffe4dac43777a23c7ebe2895988a1118de
