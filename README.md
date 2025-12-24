@@ -29,9 +29,9 @@ Também tenho interesse aplicado em **rotinas fiscais/tributárias**, priorizand
 ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
 
 ## Projetos em destaque
-- Projeto 1 — Análise de Dados (Python/Pandas) → link do repositório
-- Projeto 2 — Banco de Dados (MySQL/SQL) → link do repositório
-- Projeto 3 — Automação (Python) → link do repositório
+- Projeto 1 — Análise de Dados (Python/Pandas)
+- Projeto 2 — Banco de Dados (MySQL/SQL) 
+- Projeto 3 — Automação (Python) 
 
 ### Contato
 - **GitHub:** https://github.com/3Benevaldo
