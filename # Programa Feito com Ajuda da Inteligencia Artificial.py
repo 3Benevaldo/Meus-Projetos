@@ -12,25 +12,22 @@ ARQUIVO = Path("produtos.json")
 # =========================
 # Normalização e validações
 # =========================
-def normalizar_texto(s: str) -> str:
-    """Remove acentos e normaliza para ASCII básico."""
+def remover_acentos(s: str) -> str:
     s = unicodedata.normalize("NFKD", s)
-    s = "".join(ch for ch in s if not unicodedata.combining(ch))
-    return s
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
 
 
-def prefixo_categoria(categoria: str, tamanho: int = 4) -> str:
+def prefixo_da_categoria(categoria: str, tamanho: int = 4) -> str:
     """
-    Gera prefixo a partir da categoria.
+    Usa a primeira palavra da categoria, sem acentos, em maiúsculo.
     Ex.: "Periféricos" -> "PERI"
-         "Cabos e Adaptadores" -> "CABO" (primeira palavra)
+         "Cabos e Adaptadores" -> "CABO"
     """
-    cat = normalizar_texto(categoria).strip().upper()
+    cat = remover_acentos(categoria).strip().upper()
     cat = re.sub(r"[^A-Z0-9]+", " ", cat).strip()
     if not cat:
         return "CAT"
     primeira = cat.split()[0]
-    # Preenche com X se a palavra for curta
     return primeira[:tamanho] if len(primeira) >= tamanho else primeira.ljust(tamanho, "X")
 
 
@@ -45,8 +42,9 @@ def validar_ncm(ncm: str) -> bool:
 
 def validar_gtin(gtin: str) -> bool:
     """
-    GTIN/EAN opcional.
-    Se preenchido, aceita 8/12/13/14 dígitos (formatos comuns).
+    GTIN/EAN opcional:
+    - vazio OK
+    - se preenchido: 8/12/13/14 dígitos (formatos comuns)
     """
     gtin = gtin.strip()
     if gtin == "":
@@ -59,7 +57,7 @@ def validar_origem(origem: int) -> bool:
 
 
 # =========================
-# Persistência em JSON
+# JSON (carregar/salvar)
 # =========================
 def carregar() -> List[Dict]:
     if not ARQUIVO.exists():
@@ -67,7 +65,7 @@ def carregar() -> List[Dict]:
     try:
         return json.loads(ARQUIVO.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        print("Aviso: produtos.json está inválido. Iniciando lista vazia.")
+        print("Aviso: produtos.json inválido/corrompido. Iniciando lista vazia.")
         return []
 
 
@@ -82,7 +80,7 @@ def proximo_id(produtos: List[Dict]) -> int:
 
 
 # =========================
-# Busca e geração de SKU
+# Busca e SKU automático
 # =========================
 def buscar_por_sku(produtos: List[Dict], sku: str) -> Optional[Dict]:
     alvo = normalizar_sku(sku)
@@ -93,7 +91,7 @@ def buscar_por_sku(produtos: List[Dict], sku: str) -> Optional[Dict]:
 
 
 def gerar_sku_por_categoria(produtos: List[Dict], categoria: str, largura: int = 6) -> str:
-    pref = prefixo_categoria(categoria, tamanho=4)
+    pref = prefixo_da_categoria(categoria, tamanho=4)
     padrao = re.compile(rf"^{re.escape(pref)}-(\d+)$")
 
     numeros = []
@@ -104,13 +102,20 @@ def gerar_sku_por_categoria(produtos: List[Dict], categoria: str, largura: int =
             numeros.append(int(m.group(1)))
 
     proximo = (max(numeros) + 1) if numeros else 1
-    return f"{pref}-{proximo:0{largura}d}"
+    candidato = f"{pref}-{proximo:0{largura}d}"
+
+    # Garantia extra contra colisão (raro, mas seguro)
+    while buscar_por_sku(produtos, candidato):
+        proximo += 1
+        candidato = f"{pref}-{proximo:0{largura}d}"
+
+    return candidato
 
 
 # =========================
-# Leitura de dados (inputs)
+# Helpers de input
 # =========================
-def ler_str_obrigatorio(msg: str) -> str:
+def ler_obrigatorio(msg: str) -> str:
     while True:
         s = input(msg).strip()
         if s:
@@ -118,7 +123,7 @@ def ler_str_obrigatorio(msg: str) -> str:
         print("Campo obrigatório. Tente novamente.\n")
 
 
-def ler_float_obrigatorio(msg: str) -> float:
+def ler_float_ge0(msg: str) -> float:
     while True:
         txt = input(msg).strip().replace(",", ".")
         try:
@@ -131,7 +136,7 @@ def ler_float_obrigatorio(msg: str) -> float:
             print("Número inválido. Tente novamente.\n")
 
 
-def ler_int_obrigatorio(msg: str) -> int:
+def ler_int_ge0(msg: str) -> int:
     while True:
         txt = input(msg).strip()
         try:
@@ -144,7 +149,7 @@ def ler_int_obrigatorio(msg: str) -> int:
             print("Inteiro inválido. Tente novamente.\n")
 
 
-def ler_ncm_obrigatorio() -> str:
+def ler_ncm() -> str:
     while True:
         ncm = input("NCM (8 dígitos): ").strip()
         if validar_ncm(ncm):
@@ -152,7 +157,7 @@ def ler_ncm_obrigatorio() -> str:
         print("NCM inválido. Informe exatamente 8 dígitos numéricos.\n")
 
 
-def ler_gtin_opcional() -> str:
+def ler_gtin() -> str:
     while True:
         gtin = input("GTIN/EAN (opcional, Enter para vazio): ").strip()
         if validar_gtin(gtin):
@@ -160,20 +165,10 @@ def ler_gtin_opcional() -> str:
         print("GTIN/EAN inválido. Use 8/12/13/14 dígitos ou deixe vazio.\n")
 
 
-def ler_origem_obrigatorio() -> int:
+def ler_origem() -> int:
     while True:
-        print("Origem (0 a 8):")
-        print("  0 Nacional")
-        print("  1 Estrangeira - importação direta")
-        print("  2 Estrangeira - adquirida no mercado interno")
-        print("  3 Nacional - conteúdo de importação > 40%")
-        print("  4 Nacional - processos produtivos básicos")
-        print("  5 Nacional - conteúdo de importação <= 40%")
-        print("  6 Estrangeira - importação direta (sem similar nacional) [exemplo]")
-        print("  7 Estrangeira - adquirida mercado interno (sem similar nacional) [exemplo]")
-        print("  8 Nacional - conteúdo importação > 70%")
         try:
-            origem = int(input("Informe a origem: ").strip())
+            origem = int(input("Origem (0 a 8): ").strip())
             if validar_origem(origem):
                 return origem
         except ValueError:
@@ -182,56 +177,58 @@ def ler_origem_obrigatorio() -> int:
 
 
 # =========================
-# CRUD
+# Funcionalidades
 # =========================
-def listar(produtos: List[Dict]) -> None:
+def listar(produtos: List[Dict], incluir_inativos: bool = False) -> None:
+    titulo = "TODOS (ativos e inativos)" if incluir_inativos else "ATIVOS"
+    print(f"\n=== Lista de Produtos: {titulo} ===")
+
     if not produtos:
-        print("\nNenhum produto cadastrado.\n")
+        print("Nenhum produto cadastrado.\n")
         return
 
-    print("\nSKU           | Nome                         | Categoria       | NCM      | Preço     | Estoque")
-    print("-" * 95)
+    print("SKU           | Nome                         | Categoria       | NCM      | Preço     | Estoque | Status")
+    print("-" * 105)
+
+    exibiu = False
     for p in produtos:
+        ativo = bool(p.get("ativo", True))
+        if (not incluir_inativos) and (not ativo):
+            continue
+
         sku = str(p.get("sku", ""))
         nome = str(p.get("nome", ""))
         cat = str(p.get("categoria", ""))
         ncm = str(p.get("ncm", ""))
         preco = float(p.get("preco_venda", 0.0))
         estoque = int(p.get("estoque", 0))
-        print(f"{sku:<13} | {nome:<28} | {cat:<14} | {ncm:<8} | {preco:>8.2f} | {estoque:>7}")
+        status = "ATIVO" if ativo else "INATIVO"
+
+        print(f"{sku:<13} | {nome:<28} | {cat:<14} | {ncm:<8} | {preco:>8.2f} | {estoque:>7} | {status:<7}")
+        exibiu = True
+
+    if not exibiu:
+        print("(Nenhum produto para exibir com esse filtro.)")
     print()
 
 
 def adicionar(produtos: List[Dict]) -> None:
-    print("\n=== Adicionar Produto (com campos fiscais) ===")
-    nome = ler_str_obrigatorio("Nome do produto: ")
-    categoria = ler_str_obrigatorio("Categoria: ")
-    marca = ler_str_obrigatorio("Marca: ")
-    fornecedor = ler_str_obrigatorio("Fornecedor: ")
-    unidade = ler_str_obrigatorio("Unidade (ex.: UN, CX, KG): ")
+    print("\n=== Adicionar Produto ===")
+    nome = ler_obrigatorio("Nome do produto: ")
+    categoria = ler_obrigatorio("Categoria: ")
+    marca = ler_obrigatorio("Marca: ")
+    fornecedor = ler_obrigatorio("Fornecedor: ")
+    unidade = ler_obrigatorio("Unidade (ex.: UN, CX, KG): ")
 
-    ncm = ler_ncm_obrigatorio()
-    gtin = ler_gtin_opcional()
-    origem = ler_origem_obrigatorio()
+    ncm = ler_ncm()
+    gtin = ler_gtin()
+    origem = ler_origem()
 
-    preco_venda = ler_float_obrigatorio("Preço de venda: ")
-    preco_custo = ler_float_obrigatorio("Preço de custo (use 0 se não tiver): ")
-    estoque = ler_int_obrigatorio("Estoque: ")
+    preco_venda = ler_float_ge0("Preço de venda: ")
+    preco_custo = ler_float_ge0("Preço de custo (0 se não tiver): ")
+    estoque = ler_int_ge0("Estoque: ")
 
     sku = gerar_sku_por_categoria(produtos, categoria, largura=6)
-    # Garantia extra: se por algum motivo houver colisão (raro), incrementa até achar livre
-    while buscar_por_sku(produtos, sku):
-        # força próximo número no mesmo prefixo
-        prefixo = sku.split("-")[0]
-        padrao = re.compile(rf"^{re.escape(prefixo)}-(\d+)$")
-        numeros = []
-        for p in produtos:
-            m = padrao.match(normalizar_sku(str(p.get("sku", ""))))
-            if m:
-                numeros.append(int(m.group(1)))
-        proximo = (max(numeros) + 1) if numeros else 1
-        sku = f"{prefixo}-{proximo:06d}"
-
     print(f"SKU gerado automaticamente: {sku}")
 
     novo = {
@@ -257,7 +254,7 @@ def adicionar(produtos: List[Dict]) -> None:
 
 
 def atualizar(produtos: List[Dict]) -> None:
-    print("\n=== Atualizar Produto (SKU fixo) ===")
+    print("\n=== Atualizar Produto (por SKU; SKU fixo) ===")
     sku = input("Informe o SKU do produto: ").strip()
     p = buscar_por_sku(produtos, sku)
     if not p:
@@ -267,19 +264,12 @@ def atualizar(produtos: List[Dict]) -> None:
     print(f'SKU: {p.get("sku")} (fixo, não altera)')
     print("Deixe em branco para manter o valor atual.\n")
 
+    # Campos texto
     nome = input(f'Nome ({p.get("nome","")}): ').strip()
     categoria = input(f'Categoria ({p.get("categoria","")}): ').strip()
     marca = input(f'Marca ({p.get("marca","")}): ').strip()
     fornecedor = input(f'Fornecedor ({p.get("fornecedor","")}): ').strip()
     unidade = input(f'Unidade ({p.get("unidade","")}): ').strip()
-
-    ncm = input(f'NCM ({p.get("ncm","")}): ').strip()
-    gtin = input(f'GTIN/EAN ({p.get("gtin_ean","")}): ').strip()
-    origem_txt = input(f'Origem ({p.get("origem","")}): ').strip()
-
-    preco_venda_txt = input(f'Preço venda ({float(p.get("preco_venda",0.0)):.2f}): ').strip()
-    preco_custo_txt = input(f'Preço custo ({float(p.get("preco_custo",0.0)):.2f}): ').strip()
-    estoque_txt = input(f'Estoque ({int(p.get("estoque",0))}): ').strip()
 
     if nome:
         p["nome"] = nome
@@ -292,33 +282,38 @@ def atualizar(produtos: List[Dict]) -> None:
     if unidade:
         p["unidade"] = unidade
 
+    # Fiscal
+    ncm = input(f'NCM ({p.get("ncm","")}): ').strip()
     if ncm:
         if not validar_ncm(ncm):
             print("NCM inválido. Atualização cancelada.\n")
             return
         p["ncm"] = ncm
 
-    if gtin != "":
-        # se usuário digitou algo, valida; se digitou vazio, zera (permite remover)
+    gtin = input(f'GTIN/EAN ({p.get("gtin_ean","")}): ').strip()
+    if gtin:
         if not validar_gtin(gtin):
             print("GTIN/EAN inválido. Atualização cancelada.\n")
             return
         p["gtin_ean"] = gtin
 
+    origem_txt = input(f'Origem ({p.get("origem","")}): ').strip()
     if origem_txt:
         try:
             origem = int(origem_txt)
-            if not validar_origem(origem):
-                print("Origem inválida (0 a 8). Atualização cancelada.\n")
-                return
-            p["origem"] = origem
         except ValueError:
             print("Origem inválida. Atualização cancelada.\n")
             return
+        if not validar_origem(origem):
+            print("Origem inválida (0 a 8). Atualização cancelada.\n")
+            return
+        p["origem"] = origem
 
-    if preco_venda_txt:
+    # Números
+    pv_txt = input(f'Preço venda ({float(p.get("preco_venda",0.0)):.2f}): ').strip()
+    if pv_txt:
         try:
-            pv = float(preco_venda_txt.replace(",", "."))
+            pv = float(pv_txt.replace(",", "."))
             if pv < 0:
                 raise ValueError
             p["preco_venda"] = pv
@@ -326,9 +321,10 @@ def atualizar(produtos: List[Dict]) -> None:
             print("Preço de venda inválido. Atualização cancelada.\n")
             return
 
-    if preco_custo_txt:
+    pc_txt = input(f'Preço custo ({float(p.get("preco_custo",0.0)):.2f}): ').strip()
+    if pc_txt:
         try:
-            pc = float(preco_custo_txt.replace(",", "."))
+            pc = float(pc_txt.replace(",", "."))
             if pc < 0:
                 raise ValueError
             p["preco_custo"] = pc
@@ -336,9 +332,10 @@ def atualizar(produtos: List[Dict]) -> None:
             print("Preço de custo inválido. Atualização cancelada.\n")
             return
 
-    if estoque_txt:
+    est_txt = input(f'Estoque ({int(p.get("estoque",0))}): ').strip()
+    if est_txt:
         try:
-            est = int(estoque_txt)
+            est = int(est_txt)
             if est < 0:
                 raise ValueError
             p["estoque"] = est
@@ -350,44 +347,55 @@ def atualizar(produtos: List[Dict]) -> None:
     print("Produto atualizado com sucesso.\n")
 
 
-def excluir(produtos: List[Dict]) -> None:
-    print("\n=== Excluir Produto ===")
+def desativar(produtos: List[Dict]) -> None:
+    print("\n=== Desativar Produto (soft delete) ===")
     sku = input("Informe o SKU do produto: ").strip()
     p = buscar_por_sku(produtos, sku)
     if not p:
         print("Produto não encontrado.\n")
         return
 
-    conf = input(f'Confirma excluir "{p.get("nome")}" (SKU {p.get("sku")})? (s/n): ').strip().lower()
-    if conf != "s":
-        print("Exclusão cancelada.\n")
+    if not p.get("ativo", True):
+        print("Este produto já está desativado.\n")
         return
 
-    produtos.remove(p)
+    conf = input(f'Deseja desativar "{p.get("nome")}" (SKU {p.get("sku")})? (s/n): ').strip().lower()
+    if conf != "s":
+        print("Operação cancelada.\n")
+        return
+
+    p["ativo"] = False
     salvar(produtos)
-    print("Produto excluído com sucesso.\n")
+    print("Produto desativado com sucesso.\n")
 
 
+# =========================
+# Menu
+# =========================
 def main() -> None:
     produtos = carregar()
 
     while True:
-        print("=== Cadastro de Produtos (JSON + Fiscal) ===")
-        print("1) Listar produtos")
-        print("2) Adicionar produto (SKU automático por categoria)")
-        print("3) Atualizar produto (por SKU, SKU fixo)")
-        print("4) Excluir produto (por SKU)")
+        print("=== Sistema de Cadastro de Produtos (JSON + Validações) ===")
+        print("1) Listar produtos (ativos)")
+        print("2) Listar produtos (todos, incluindo inativos)")
+        print("3) Adicionar produto (SKU automático por categoria)")
+        print("4) Atualizar produto (por SKU; SKU fixo)")
+        print("5) Desativar produto (soft delete; por SKU)")
         print("0) Sair")
+
         op = input("Escolha: ").strip()
 
         if op == "1":
-            listar(produtos)
+            listar(produtos, incluir_inativos=False)
         elif op == "2":
-            adicionar(produtos)
+            listar(produtos, incluir_inativos=True)
         elif op == "3":
-            atualizar(produtos)
+            adicionar(produtos)
         elif op == "4":
-            excluir(produtos)
+            atualizar(produtos)
+        elif op == "5":
+            desativar(produtos)
         elif op == "0":
             print("Saindo...")
             break
