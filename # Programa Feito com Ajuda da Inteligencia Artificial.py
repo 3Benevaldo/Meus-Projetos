@@ -1,4 +1,4 @@
-# Programa Feito com Ajuda da Inteligencia Artificial
+# Programa Feito com Uso da Inteligencia Artificial
 
 import json
 import re
