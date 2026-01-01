@@ -1599,6 +1599,77 @@ def export_nf_pdf_reportlab(nf_id: int, out_path: str) -> None:
 # =========================================================
 # MENU
 # =========================================================
+def is_valid_uf(uf: str) -> bool:
+    return (uf or "").strip().upper() in UFS_BRASIL
+
+
+def auditar_e_corrigir_ufs(apenas_ativos: bool = True) -> None:
+    """
+    Varre cadastros (filiais e pessoas) e corrige UF vazia/inválida.
+    - Se apenas_ativos=True: corrige somente registros ativos (recomendado).
+    - Pergunta UF apenas quando faltar/estiver inválida e salva automaticamente.
+    """
+    title("Auditar e corrigir UFs (Filiais e Pessoas)")
+
+    # --- Filiais ---
+    store_fil = load_store(FILE_FILIAIS)
+    filiais = store_fil.get("items", []) or []
+    alterou_fil = 0
+    checadas_fil = 0
+
+    print("\n[1/2] Verificando FILIAIS...")
+    for f in filiais:
+        if apenas_ativos and int(f.get("ativo", 1)) != 1:
+            continue
+        checadas_fil += 1
+
+        uf_atual = str(f.get("uf", "")).strip().upper()
+        if not is_valid_uf(uf_atual):
+            print("\nUF inválida/vazia em FILIAL:")
+            print(f"  Filial: [{f.get('id')}] {f.get('nome')} | UF atual: '{uf_atual}'")
+            uf_nova = ask_uf("  Informe a UF correta da filial: ")
+            f["uf"] = uf_nova
+            alterou_fil += 1
+
+    if alterou_fil > 0:
+        save_store(FILE_FILIAIS, store_fil)
+        print(f"\nFiliais atualizadas: {alterou_fil}")
+    else:
+        print("\nFiliais: nenhuma correção necessária.")
+
+    # --- Pessoas ---
+    store_pes = load_store(FILE_PESSOAS)
+    pessoas = store_pes.get("items", []) or []
+    alterou_pes = 0
+    checadas_pes = 0
+
+    print("\n[2/2] Verificando PESSOAS (clientes/fornecedores)...")
+    for p in pessoas:
+        if apenas_ativos and int(p.get("ativo", 1)) != 1:
+            continue
+        checadas_pes += 1
+
+        uf_atual = str(p.get("uf", "")).strip().upper()
+        if not is_valid_uf(uf_atual):
+            tipo = str(p.get("tipo", "")).upper()
+            tipo_txt = "Cliente" if tipo == "C" else ("Fornecedor" if tipo == "F" else "Ambos")
+
+            print("\nUF inválida/vazia em PESSOA:")
+            print(f"  Pessoa: [{p.get('id')}] {p.get('nome')} | tipo={tipo_txt} | UF atual: '{uf_atual}'")
+            uf_nova = ask_uf("  Informe a UF correta da pessoa: ")
+            p["uf"] = uf_nova
+            alterou_pes += 1
+
+    if alterou_pes > 0:
+        save_store(FILE_PESSOAS, store_pes)
+        print(f"\nPessoas atualizadas: {alterou_pes}")
+    else:
+        print("\nPessoas: nenhuma correção necessária.")
+
+    print("\nResumo da auditoria:")
+    print(f"  Filiais checadas: {checadas_fil} | corrigidas: {alterou_fil}")
+    print(f"  Pessoas checadas: {checadas_pes} | corrigidas: {alterou_pes}")
+    print("\nConcluído.")
 def menu() -> None:
     print("\nSelecione uma opção:")
     print(" 1) Cadastrar Filial")
@@ -1625,6 +1696,7 @@ def menu() -> None:
     print("22) Ativar/Inativar cadastro (Filial/Pessoa/Produto)")
     print("23) Exportar NF para HTML")
     print("24) Exportar NF para PDF (reportlab)")
+    print("25) Auditar e corrigir UFs (cadastros) [automático]")
     print(" 0) Sair")
 
 def bootstrap_files() -> None:
@@ -1724,6 +1796,8 @@ def main() -> None:
                 nf_id = ask_int("NF ID: ", required=True, min_v=1) or 0
                 out = ask_str("Salvar em (ex.: C:/temp/nf.pdf): ")
                 export_nf_pdf_reportlab(int(nf_id), out)
+            elif op == "25":
+                auditar_e_corrigir_ufs(apenas_ativos=True)
             else:
                 print("Opção inválida.")
         except KeyboardInterrupt:
