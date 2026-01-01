@@ -1,3 +1,4 @@
+# Sistema_nfe
 # sistema nfe
 
 from __future__ import annotations
@@ -1644,10 +1645,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
