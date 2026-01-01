@@ -1,4 +1,11 @@
 {
-  "seq": 0,
-  "items": []
+  "seq": 1,
+  "items": [
+    {
+      "id": 1,
+      "nome": "2",
+      "uf": "MG",
+      "ativo": 1
+    }
+  ]
 }

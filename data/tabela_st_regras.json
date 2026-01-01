@@ -1,4 +1,22 @@
 {
-  "updated_at": "",
-  "regras": []
+  "updated_at": "2026-01-01T12:47:40",
+  "regras": [
+    {
+      "id": 1,
+      "uf_origem": "SP",
+      "uf_destino": "MG",
+      "ncm": "85171231",
+      "cest": "0210690",
+      "cfop": "6102",
+      "mva": 40.0,
+      "red_bc_st": 0.0,
+      "aliq_icms_interna_dest": 18.0,
+      "aliq_fcp_dest": 2.0,
+      "vig_ini": "2026-01-01",
+      "vig_fim": "",
+      "prioridade": 10,
+      "ativo": 1
+    }
+  ],
+  "seq": 1
 }
